@@ -16,13 +16,15 @@ $ pip3 install -r requirements.txt
 Please download MVTecAD dataset from [MVTecAD dataset](https://www.mvtec.com/de/unternehmen/forschung/datasets/mvtec-ad/), BTAD dataset from [BTAD dataset](http://avires.dimi.uniud.it/papers/btad/btad.zip), and MVTec3D dataset from [MVTec3D dataset](https://www.mvtec.com/company/research/datasets/mvtec-3d-ad).
 
 ## Creating Distance Maps
-Please run the following code for creating distance maps used in target correlations. Or you can unzip the ``data.zip``, and use our calculated distance maps in the data/distances folder.
+Please run the following code for creating distance maps used in target correlations. 
+<--Or you can unzip the ``data.zip``, and use our calculated distance maps in the data/distances folder.-->
 ```
 python create_distance_maps.py 
 ```
 
 ## Creating Reference Features
-Please run the following code for generating external reference features (based on ``wide_resnet50``). Or you can unzip the ``data.zip``, and use our generated reference features in the data/rfeatures_w50 folder.
+Please run the following code for generating external reference features (based on ``wide_resnet50``). 
+<--Or you can unzip the ``data.zip``, and use our generated reference features in the data/rfeatures_w50 folder.-->
 ```bash
 # For MVTecAD
 python create_ref_features.py --dataset mvtec --data_path /path/to/your/dataset --backbone_arch wide_resnet50_2 --save_path rfeatures_w50
