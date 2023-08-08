@@ -1,4 +1,4 @@
-## [Focus the Discrepancy: Intra- and Inter-Correlation Learning for Image Anomaly Detection](https://arxiv.org/abs/2207.01463)
+## [Focus the Discrepancy: Intra- and Inter-Correlation Learning for Image Anomaly Detection](https://arxiv.org/abs/2308.02983)
 
 PyTorch implementation and for ICCV2023 paper, Focus the Discrepancy: Intra- and Inter-Correlation Learning for Image Anomaly Detection.
 
@@ -61,7 +61,7 @@ If you find this repository useful, please consider citing our work:
       author={Xincheng Yao and Ruoqi Li and Zefeng Qian and Yan Luo and Chongyang Zhang},
       year={2023},
       booktitle={International Conference on Computer Vision 2023},
-      url={https://arxiv.org/abs/2207.01463},
+      url={https://arxiv.org/abs/2308.02983},
       primaryClass={cs.CV}
 }
 ```
