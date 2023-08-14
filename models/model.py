@@ -165,9 +165,9 @@ class FOD(nn.Module):
             [
                 EncoderLayer(
                     Attention2D(
-                        seq_len, d_model, n_heads, dropout=dropout),
+                        seq_len, d_model, n_heads, dropout=dropout, device=args.device),
                     Attention2D(
-                        seq_len, d_model, n_heads, dropout=dropout),
+                        seq_len, d_model, n_heads, dropout=dropout, device=args.device),
                     d_model,
                     d_feed_foward,
                     dropout=dropout
