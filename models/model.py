@@ -152,7 +152,7 @@ class FOD(nn.Module):
             mappings = {4096: 'layer0', 1024: 'layer1', 256: 'layer2', 64: 'layer3'}
             layer_name = mappings[seq_len]
         
-            self.ref_embedding = Embedding2D(in_channels, d_model, dropout, h=h, w=w, with_pos_embed=True)
+            self.ref_embedding = Embedding2D(in_channels, d_model, dropout, h=h, w=w, with_pos_embed=True, device=args.device)
             ref_feature_filepath = os.path.join(args.rfeatures_path, '%s.pkl' % args.class_name)
             with open(ref_feature_filepath, 'rb') as f:
                 ref_feats = pickle.load(f)
