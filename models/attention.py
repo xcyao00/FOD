@@ -10,7 +10,8 @@ class Attention2D(nn.Module):
                  d_model=512,
                  num_heads=8,
                  scale_factor=None,
-                 dropout=0.0):
+                 dropout=0.0,
+                 device=torch.device('cuda')):
         super(Attention2D, self).__init__()
         
         self.seq_len = seq_len
@@ -18,6 +19,7 @@ class Attention2D(nn.Module):
         self.scale_factor = scale_factor or 1. / math.sqrt(d_model // num_heads)
         self.dropout = nn.Dropout(dropout)
         self.num_heads = num_heads
+        self.device = device
 
         self.query_projection = nn.Linear(d_model, d_model)
         self.key_projection = nn.Linear(d_model, d_model)
@@ -29,8 +31,8 @@ class Attention2D(nn.Module):
         distances_y = np.load('distances/distances_y_{}.npy'.format(seq_len))
         distances_x = torch.from_numpy(distances_x)
         distances_y = torch.from_numpy(distances_y)
-        self.distances_x = distances_x.cuda()
-        self.distances_y = distances_y.cuda()
+        self.distances_x = distances_x.to(device)
+        self.distances_y = distances_y.to(device)
 
     def forward(self, query, key, value, return_attention=True):
         B, L, _ = query.shape
@@ -58,8 +60,8 @@ class Attention2D(nn.Module):
             sigma2 = sigma2.unsqueeze(-1).repeat(1, 1, 1, self.seq_len)  # (B, n_heads, L, L)
             
             # (B, n_heads, L, L)
-            distances_x = self.distances_x.unsqueeze(0).unsqueeze(0).repeat(sigma.shape[0], sigma.shape[1], 1, 1).cuda()
-            distances_y = self.distances_y.unsqueeze(0).unsqueeze(0).repeat(sigma.shape[0], sigma.shape[1], 1, 1).cuda()
+            distances_x = self.distances_x.unsqueeze(0).unsqueeze(0).repeat(sigma.shape[0], sigma.shape[1], 1, 1).to(self.device)
+            distances_y = self.distances_y.unsqueeze(0).unsqueeze(0).repeat(sigma.shape[0], sigma.shape[1], 1, 1).to(self.device)
             # gaussian distance prior
             target = 1.0 / (2 * math.pi * sigma1 * sigma2) * torch.exp(-distances_y / (2 * sigma1 ** 2) -distances_x / (2 * sigma2 ** 2))
 
