@@ -4,7 +4,7 @@ import torch.nn as nn
 
 
 class PositionalEmbedding(nn.Module):
-    def __init__(self, d_model, h=16, w=16):
+    def __init__(self, d_model, h=16, w=16, device=torch.device('cuda')):
         super(PositionalEmbedding, self).__init__()
 
         if d_model % 4 != 0:
@@ -24,7 +24,7 @@ class PositionalEmbedding(nn.Module):
         pos_embed[half_d_model::2,  :, :]  = torch.sin(pos_h * div_term).transpose(0, 1).unsqueeze(2).repeat(1, 1, self.w)
         pos_embed[half_d_model+1::2,:, :]  = torch.cos(pos_h * div_term).transpose(0, 1).unsqueeze(2).repeat(1, 1, self.w)
 
-        self.pos_embed = pos_embed.cuda()
+        self.pos_embed = pos_embed.to(device)
 
     def forward(self):
         return self.pos_embed
@@ -46,12 +46,12 @@ class ProjectEmbedding(nn.Module):
 
 
 class Embedding2D(nn.Module):
-    def __init__(self, in_channels, d_model, dropout=0.0, h=16, w=16, with_pos_embed=True):
+    def __init__(self, in_channels, d_model, dropout=0.0, h=16, w=16, with_pos_embed=True, device=torch.device('cuda')):
         super(Embedding2D, self).__init__()
 
         self.project_embedding = ProjectEmbedding(in_channels, d_model)
         if with_pos_embed:
-            self.position_embedding = PositionalEmbedding(d_model, h=h, w=w)
+            self.position_embedding = PositionalEmbedding(d_model, h=h, w=w, device=device)
         self.with_pos_embed = with_pos_embed
 
         self.dropout = nn.Dropout(p=dropout)
