@@ -157,7 +157,7 @@ class FOD(nn.Module):
             with open(ref_feature_filepath, 'rb') as f:
                 ref_feats = pickle.load(f)
             ref_feats = ref_feats[layer_name]
-            self.ref_feats = torch.from_numpy(ref_feats[0] if isinstance(ref_feats, list) else ref_feats).cuda()
+            self.ref_feats = torch.from_numpy(ref_feats[0] if isinstance(ref_feats, list) else ref_feats).to(args.device)
             self.ref_feats = self.ref_feats.unsqueeze(0).repeat([args.batch_size, 1, 1]).permute(0, 2, 1)  # (N, L, dim)
         
         # Encoder
