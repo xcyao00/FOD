@@ -66,4 +66,5 @@ If you find this repository useful, please consider citing our work:
 }
 ```
 
+If you are interested in our work, you can also follow our other works: [BGAD (CVPR2023)](https://github.com/xcyao00/BGAD), [PMAD (AAAI2023)](https://github.com/xcyao00/PMAD), [ResAD (NeurIPS2024)](https://github.com/xcyao00/ResAD), [HGAD (ECCV2024)](https://github.com/xcyao00/HGAD). Or, you can follow our github page [xcyao00](https://github.com/xcyao00).
 
