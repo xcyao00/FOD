@@ -1,5 +1,9 @@
 ## [Focus the Discrepancy: Intra- and Inter-Correlation Learning for Image Anomaly Detection](https://arxiv.org/abs/2308.02983)
 
+[![Papers with Code: SOTA on BTAD (Class-Separated Normal-Only)](https://paperswithcode.co/api/v1/papers/2308.02983/leaderboard-badge.svg?eval=15382&live=1)](https://paperswithcode.co/api/v1/papers/2308.02983/leaderboard-badge-link?eval=15382)
+[![Papers with Code: SOTA on MVTec 3D-AD (RGB-Only)](https://paperswithcode.co/api/v1/papers/2308.02983/leaderboard-badge.svg?eval=15384&live=1)](https://paperswithcode.co/api/v1/papers/2308.02983/leaderboard-badge-link?eval=15384)
+[![Papers with Code: #2 on MVTec AD (Class-Separated Normal-Only)](https://paperswithcode.co/api/v1/papers/2308.02983/leaderboard-badge.svg?eval=15380&live=1)](https://paperswithcode.co/api/v1/papers/2308.02983/leaderboard-badge-link?eval=15380)
+
 PyTorch implementation and for ICCV2023 paper, Focus the Discrepancy: Intra- and Inter-Correlation Learning for Image Anomaly Detection.
 
 <img src="./FOD-framework.jpg" width="800">
